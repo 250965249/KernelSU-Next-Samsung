@@ -114,6 +114,7 @@ pub fn run(package_name: &String, kmi: Option<String>, allow_shell: bool, soft_r
     }
 
     // 7. Initialize features
+    crate::feature::init_forced_features();
     if let Err(e) = crate::feature::init_features() {
         warn!("init features failed: {e}");
     }
