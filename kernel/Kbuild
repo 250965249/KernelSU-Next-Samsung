@@ -5,6 +5,7 @@ kernelsu-objs += compat/samsung_defex.o
 kernelsu-objs += compat/samsung_rkp.o
 
 kernelsu-objs += feature/kernel_umount.o
+kernelsu-objs += feature/module_blacklist.o
 kernelsu-objs += feature/sulog.o
 kernelsu-objs += feature/sucompat.o
 
