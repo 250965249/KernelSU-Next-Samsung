@@ -74,16 +74,17 @@ endif
 ifeq ($(CONFIG_KSU_X86_PATCH_SYSCALL_DISPATCHER),y)
 ccflags-y += -DCONFIG_KSU_X86_PATCH_SYSCALL_DISPATCHER=1
 endif
-ifeq ($(CONFIG_KSU_SAMSUNG_KDP),y)
+# Samsung Knox / RKP / KDP / DEFEX compatibility flags (enabled by default for Samsung builds)
+ifneq ($(CONFIG_KSU_SAMSUNG_KDP),n)
 ccflags-y += -DCONFIG_KSU_SAMSUNG_KDP=1
 endif
-ifeq ($(CONFIG_KSU_SAMSUNG_RKP),y)
+ifneq ($(CONFIG_KSU_SAMSUNG_RKP),n)
 ccflags-y += -DCONFIG_KSU_SAMSUNG_RKP=1
 endif
-ifeq ($(CONFIG_KSU_SAMSUNG_DEFEX),y)
+ifneq ($(CONFIG_KSU_SAMSUNG_DEFEX),n)
 ccflags-y += -DCONFIG_KSU_SAMSUNG_DEFEX=1
 endif
-ifeq ($(CONFIG_KSU_SAMSUNG_NO_PATCH_TEXT),y)
+ifneq ($(CONFIG_KSU_SAMSUNG_NO_PATCH_TEXT),n)
 ccflags-y += -DCONFIG_KSU_SAMSUNG_NO_PATCH_TEXT=1
 endif
 endif
