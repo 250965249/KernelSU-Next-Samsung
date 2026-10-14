@@ -1,9 +1,5 @@
 kernelsu-objs := core/init.o
 
-kernelsu-objs += compat/samsung_kdp.o
-kernelsu-objs += compat/samsung_defex.o
-kernelsu-objs += compat/samsung_rkp.o
-
 kernelsu-objs += feature/kernel_umount.o
 kernelsu-objs += feature/module_blacklist.o
 kernelsu-objs += feature/sulog.o
@@ -15,6 +11,9 @@ kernelsu-objs += hook/syscall_event_bridge.o
 kernelsu-objs += hook/syscall_hook_manager.o
 kernelsu-objs += hook/tp_marker.o
 ifeq ($(CONFIG_ARM64),y)
+kernelsu-objs += compat/samsung_kdp.o
+kernelsu-objs += compat/samsung_defex.o
+kernelsu-objs += compat/samsung_rkp.o
 kernelsu-objs += hook/arm64/patch_memory.o
 kernelsu-objs += hook/arm64/syscall_hook.o
 else ifeq ($(CONFIG_X86_64),y)
@@ -74,6 +73,7 @@ endif
 ifeq ($(CONFIG_KSU_X86_PATCH_SYSCALL_DISPATCHER),y)
 ccflags-y += -DCONFIG_KSU_X86_PATCH_SYSCALL_DISPATCHER=1
 endif
+ifeq ($(CONFIG_ARM64),y)
 # Samsung Knox / RKP / KDP / DEFEX compatibility flags (enabled by default for Samsung builds)
 ifneq ($(CONFIG_KSU_SAMSUNG_KDP),n)
 ccflags-y += -DCONFIG_KSU_SAMSUNG_KDP=1
@@ -86,6 +86,7 @@ ccflags-y += -DCONFIG_KSU_SAMSUNG_DEFEX=1
 endif
 ifneq ($(CONFIG_KSU_SAMSUNG_NO_PATCH_TEXT),n)
 ccflags-y += -DCONFIG_KSU_SAMSUNG_NO_PATCH_TEXT=1
+endif
 endif
 endif
 
