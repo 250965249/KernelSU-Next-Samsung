@@ -231,11 +231,11 @@ fn main() {
     assemble_bootstrap();
 
     let (code, name) = match get_git_version() {
-        Ok((_code, _name)) => (33294, "3.4.0".to_string()), // PATCH(ghostsam): version pin — official v3.4.0
+        Ok((_code, _name)) => (33355, "3.4.2".to_string()), // PATCH(ghostsam): version pin — official v3.4.2
         Err(_) => {
             // show warning if git is not installed
             println!("cargo:warning=Failed to get git version, using 0.0.0");
-            (33294, "3.4.0".to_string()) // PATCH(ghostsam): version pin (git fallback pinned too)
+            (33355, "3.4.2".to_string()) // PATCH(ghostsam): version pin (git fallback pinned too)
         }
     };
     let out_dir = env::var("OUT_DIR").expect("Failed to get $OUT_DIR");

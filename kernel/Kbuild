@@ -5,6 +5,7 @@ kernelsu-objs += compat/samsung_defex.o
 kernelsu-objs += compat/samsung_rkp.o
 
 kernelsu-objs += feature/kernel_umount.o
+kernelsu-objs += feature/module_blacklist.o
 kernelsu-objs += feature/sulog.o
 kernelsu-objs += feature/sucompat.o
 
@@ -58,6 +59,7 @@ kernelsu-objs += supercall/supercall.o
 kernelsu-objs += feature/adb_root.o
 
 kernelsu-objs += feature/selinux_hide.o
+kernelsu-objs += feature/shell_su_adb_only.o
 
 ifdef KBUILD_EXTMOD
 ifeq ($(CONFIG_KSU_DISABLE_MANAGER),y)
@@ -124,10 +126,10 @@ $(info -- KernelSU-Next Git repo detected at: $(GIT_ROOT))
 endif
 endif
 
-# PATCH(ghostsam): version pin — official v3.4.0 code/name/tag (samsung-lateload lineage counts 3271 => 33271).
+# PATCH(ghostsam): version pin — official v3.4.2 (tag v3.4.2 == upstream tip 4c706b59; count 3355 => 33355).
 # Unconditional: overrides git-derived values above (and works even when git detection is unavailable).
-KSU_GIT_VERSION := 3294
-KSU_GIT_TAG := v3.4.0
+KSU_GIT_VERSION := 3355
+KSU_GIT_TAG := v3.4.2
 KSU_GIT_VERSION_VALID := 1
 
 # Calculate version if git version is available
