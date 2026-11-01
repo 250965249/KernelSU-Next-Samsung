@@ -24,6 +24,8 @@ jobs:
     steps:
       - name: Checkout source code
         uses: actions/checkout@v7
+        with:
+          ref: ${{ github.ref_name }}
 
       - name: Build susfs_guard_lkm.ko
         run: |
