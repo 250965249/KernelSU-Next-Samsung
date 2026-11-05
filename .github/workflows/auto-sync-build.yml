@@ -167,8 +167,12 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          set -euo pipefail
+          set -euxo pipefail
+          echo "workspace=$PWD"
+          ls -la
+          ls -laR ksud-artifact || true
           ksud="$(find ksud-artifact -type f -name ksud -print -quit)"
+          echo "ksud=[$ksud]"
           if [ -z "$ksud" ]; then
             echo "::error::no ksud binary in the downloaded artifact"
             find ksud-artifact -maxdepth 3 -type f -exec ls -l {} \; || true
